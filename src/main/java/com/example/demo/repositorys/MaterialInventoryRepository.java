@@ -23,7 +23,7 @@ public interface MaterialInventoryRepository extends JpaRepository<MaterialInven
 
     @Transactional
     @Modifying
-    @Query(value = "insert into material_inventory(storeId, materialId)" +
+    @Query(value = "insert into material_inventory(store_id, material_id)" +
             " values(:#{#materialInventory.storeId},:#{#materialInventory.materialId})",
             nativeQuery = true)
     void insert(@Param("materialInventory") MaterialInventory materialInventory);

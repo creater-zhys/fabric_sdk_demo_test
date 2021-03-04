@@ -21,8 +21,8 @@ public interface StoreRepository extends JpaRepository<Store, Long> {
 
     @Transactional
     @Modifying
-    @Query(value = "insert into store(id, address, owner)" +
-            " values(null,:#{#store.address},:#{#store.owner})",
+    @Query(value = "insert into store(id, address, owner, name, size)" +
+            " values(:#{#store.id},:#{#store.address},:#{#store.owner},:#{#store.name},:#{#store.size})",
             nativeQuery = true)
     void insert(@Param("store") Store store);
 }

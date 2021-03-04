@@ -9,6 +9,8 @@ import lombok.ToString;
 @Getter
 @Setter
 public class StoreInfoRequestVO extends Verification {
+    private Long id;
+
     private String name;
 
     private Long size;

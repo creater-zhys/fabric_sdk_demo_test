@@ -68,7 +68,8 @@ public class StoreController {
         User user = (User) session.getAttribute(Const.CUR_USER); // TODO：
         ServerResponse<StoreInfoResponseVO> response;
         try {
-            Store store =  storeService.addNewStore(storeVO.getName(), storeVO.getAddress(), user.getName());
+            Store store =  storeService.addNewStore(storeVO.getId(), storeVO.getName(),
+                    storeVO.getAddress(), user.getName(),storeVO.getSize());
             StoreInfoResponseVO storeInfoResponseVO = new StoreInfoResponseVO();
             storeInfoResponseVO.setStore(store);
             response = ServerResponse.createBySuccess(storeInfoResponseVO);

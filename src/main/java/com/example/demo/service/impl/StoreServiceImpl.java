@@ -141,11 +141,13 @@ public class StoreServiceImpl implements StoreService {
     }
 
     @Override
-    public Store addNewStore(String name, String address, String ownerId) {
+    public Store addNewStore(Long id, String name, String address, String ownerId, Long size) {
         Store store = new Store();
+        store.setId(id);
         store.setName(name);
         store.setAddress(address);
         store.setOwner(ownerId);
+        store.setSize(size);
         storeRepository.insert(store);
 
         return storeRepository.findByName(name);

@@ -22,7 +22,7 @@ public interface MaterialRepository extends JpaRepository<Material, Long> {
     @Transactional
     @Modifying
     @Query(value = "insert into material(id, price, owner)" +
-            " values(null,:#{#material.price},:#{#material.owner})",
+            " values(:#{#material.id},:#{#material.price},:#{#material.owner})",
             nativeQuery = true)
     void insert(@Param("material") Material material);
 }

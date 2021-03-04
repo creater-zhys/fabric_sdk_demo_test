@@ -64,5 +64,5 @@ public interface StoreService {
     List<Store> queryStoresByOwner(String owner);
 
     // 新建仓库
-    Store addNewStore(String name, String address, String ownerId);
+    Store addNewStore(Long id, String name, String address, String ownerId, Long size);
 }
