@@ -1,29 +1,29 @@
 package com.example.demo.common.Enum;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 @ToString
-public enum UserTypeEnum {
+public enum OrderTypeEnum {
     UNKNOWN("UNKNOWN", 0),
 
-    SUPPLIER("SUPPLIER", 1),
+    PRODUCT("PRODUCT", 1),
 
-    MANUFACTURER("MANUFACTURER", 2),
-
-    DEALER("DEALER", 3),
-
-    ADMIN("ADMIN", 4);
+    MATERIAL("MATERIAL", 2);
 
     private String name;
+
     private Integer index;
 
-    UserTypeEnum(String name, Integer index) {
+    OrderTypeEnum(String name, Integer index) {
         this.name = name;
         this.index = index;
     }
 
-    public UserTypeEnum getUserTypeByName(String name) {
-        for (UserTypeEnum type : UserTypeEnum.values()) {
+    public OrderTypeEnum getOrderTypeByName(String name) {
+        for (OrderTypeEnum type : OrderTypeEnum.values()) {
             if (type.getTypeName() == name) {
                 return type;
             }
@@ -34,4 +34,5 @@ public enum UserTypeEnum {
     public String getTypeName() {
         return this.name;
     }
+
 }
