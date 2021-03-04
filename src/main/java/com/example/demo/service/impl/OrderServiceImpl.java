@@ -50,27 +50,28 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<Long> queryProductsIdByOrderId(Long orderId) {
-        return null;
+        return productOrderRepository.findProductIdByOrderId(orderId);
+
     }
 
     @Override
     public List<Long> queryMaterialsIdByOrderId(Long orderId) {
-        return null;
+        return materialOrderRepository.findMaterialIdByOrderId(orderId);
     }
 
     @Override
     public Order queryOrderInfoByOrderId(Long orderId) {
-        return null;
+        return orderRepository.findOrderById(orderId);
     }
 
     @Override
     public List<Order> queryOrderByBuyer(String buyer) {
-        return null;
+        return orderRepository.findOrdersByBuyer(buyer);
     }
 
     @Override
     public List<Order> queryOrderBySeller(String seller) {
-        return null;
+        return orderRepository.findOrdersBySeller(seller);
     }
 
     private Order insertOrder(String seller, String buyer, String destination) {

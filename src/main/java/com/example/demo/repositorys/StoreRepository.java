@@ -17,7 +17,7 @@ public interface StoreRepository extends JpaRepository<Store, Long> {
 
     Store findByName(String name);
 
-    String findNameByStoreId(Long storeId);
+    String findNameById(Long storeId);
 
     @Transactional
     @Modifying

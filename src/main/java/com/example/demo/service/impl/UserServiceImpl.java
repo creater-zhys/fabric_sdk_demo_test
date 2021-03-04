@@ -41,6 +41,9 @@ public class UserServiceImpl implements UserService {
         }
         user = new User();
         user.setName(name);
+        user.setEmail(email);
+        user.setTelephone(telephone);
+        user.setUserTypeEnum(userTypeEnum);
         user.setPassword(password);
         try {
             userRepository.insert(user);
@@ -63,7 +66,7 @@ public class UserServiceImpl implements UserService {
         }
         real.setPassword(nowPassword);
         if (userRepository.changePassword(user.getName(), nowPassword) > 0)
-            return ServerResponse.createBySuccess();
+            return ServerResponse.createBySuccess("success");
         return ServerResponse.createByErrorMessage("change password failed");
     }
 }

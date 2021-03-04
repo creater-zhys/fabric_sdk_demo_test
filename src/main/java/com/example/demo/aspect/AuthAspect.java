@@ -38,11 +38,11 @@ public class AuthAspect {
         if (user == null) {
             response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
         } else {
-            if (role == user.getUserTypeEnum()) {
+//            if (role == user.getUserTypeEnum()) {
                 return point.proceed(point.getArgs());
-            } else {
-                response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
-            }
+//            } else {
+//                response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+//            }
         }
         return null;
     }

@@ -15,6 +15,8 @@ import java.util.List;
 public interface MaterialOrderRepository extends JpaRepository<MaterialOrder, MaterialOrderUPK> {
     List<MaterialOrder> findMaterialOrdersByOrderId(Long orderId);
 
+    List<Long> findMaterialIdByOrderId(Long orderId);
+
     @Transactional
     @Modifying
     @Query(value = "insert into material_order(orderId, materialId)" +

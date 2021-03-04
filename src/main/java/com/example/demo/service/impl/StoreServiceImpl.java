@@ -132,7 +132,7 @@ public class StoreServiceImpl implements StoreService {
 
     @Override
     public String queryOwnerOfStore(Long storeId) {
-        return storeRepository.findNameByStoreId(storeId);
+        return storeRepository.findNameById(storeId);
     }
 
     @Override

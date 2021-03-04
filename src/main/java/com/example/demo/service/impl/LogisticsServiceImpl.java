@@ -54,12 +54,15 @@ public class LogisticsServiceImpl implements LogisticsService {
     // 修改物流信息表
     @Override
     public Logistics updateCurrentAddress(Long logisticsId, String currentAddress) {
-        return null;
+        Logistics logistics = logisticsRepository.findLogisticsById(logisticsId);
+        logistics.setCurrentAddress(currentAddress);
+        logisticsRepository.save(logistics);
+        return logistics;
     }
 
     @Override
     public List<Logistics> queryLogisticsIdByOrderId(Long orderId) {
-        return null;
+        return logisticsRepository.findLogisticsByOrderId(orderId);
     }
 
 //    @Override

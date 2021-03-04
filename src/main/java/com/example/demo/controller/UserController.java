@@ -24,9 +24,9 @@ public class UserController {
     @RequestMapping(value = "login", method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<User> login(@RequestBody UserVO userVO, HttpSession session) {
-        if (userVO.getEmail() == null || userVO.getPassword() == null)
-            return ServerResponse.createByErrorMessage("null request");
-        ServerResponse<User> response = userService.login(userVO.getEmail(), userVO.getPassword());
+        if (!userVO.checkArguments())
+            return ServerResponse.createByErrorMessage("wrong arguments");
+        ServerResponse<User> response = userService.login(userVO.getName(), userVO.getPassword());
         if (response.isSuccess()) {
             session.setAttribute(Const.CUR_USER, response.getData());
         }
@@ -46,9 +46,11 @@ public class UserController {
     @RequestMapping(value = "register", method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<String> register(@RequestBody UserRequestVO userRequestVO) {
+        if (!userRequestVO.checkArguments()) {
+            return ServerResponse.createByErrorMessage("wrong arguments");
+        }
         ServerResponse<String> response;
         try {
-            userRequestVO.checkArguments();
             userService.register(userRequestVO.getName(), userRequestVO.getTelephone(), userRequestVO.getEmail(), userRequestVO.getUserTypeEnum(),
                     userRequestVO.getPassword());
 
@@ -62,11 +64,15 @@ public class UserController {
     @RequireAuth
     @RequestMapping(value = "password", method = RequestMethod.POST)
     @ResponseBody
-    public ServerResponse changePasswd(String old, String now, HttpSession session) {
+    public ServerResponse changePasswd(@RequestParam("oldPassword") String oldPassword,
+                                       @RequestParam("newPassword") String newPassword, HttpSession session) {
+        if (oldPassword == null || newPassword == null) {
+            return ServerResponse.createByErrorMessage("wrong arguments");
+        }
         User user = (User) session.getAttribute(Const.CUR_USER);
         if (user == null)
             return ServerResponse.createByErrorMessage("未登录");
-        return userService.changePassword(old, now, user);
+        return userService.changePassword(oldPassword, newPassword, user);
     }
 
     @RequestMapping(value = "logout", method = RequestMethod.GET)

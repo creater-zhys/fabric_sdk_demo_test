@@ -8,10 +8,13 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 public interface LogisticsRepository extends JpaRepository<Logistics, Long> {
     Logistics findLogisticsById(Long logisticsId);
+
+    List<Logistics> findLogisticsByOrderId(Long orderId);
 
     @Transactional
     @Modifying

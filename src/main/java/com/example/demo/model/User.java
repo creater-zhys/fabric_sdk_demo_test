@@ -3,8 +3,7 @@ package com.example.demo.model;
 import com.example.demo.common.Enum.UserTypeEnum;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @ToString
 @Getter
@@ -20,6 +19,8 @@ public class User {
 
     private String telephone;
 
+    @Enumerated(EnumType.STRING)
+    @Column(columnDefinition = "text")
     private UserTypeEnum userTypeEnum;
 
     private boolean isAdmin = false;

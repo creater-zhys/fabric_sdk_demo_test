@@ -26,6 +26,14 @@ public class UserRequestVO extends Verification {
 
     @Override
     public Boolean checkArguments() {
-        return null;
+        if (name == null || email == null || password == null) {
+            return false;
+        } else if (userTypeEnum == UserTypeEnum.ADMIN || userTypeEnum == UserTypeEnum.DEALER ||
+                userTypeEnum == UserTypeEnum.MANUFACTURER || userTypeEnum == UserTypeEnum.SUPPLIER) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }

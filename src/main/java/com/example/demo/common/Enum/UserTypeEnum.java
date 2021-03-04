@@ -2,7 +2,6 @@ package com.example.demo.common.Enum;
 
 import lombok.ToString;
 
-@ToString
 public enum UserTypeEnum {
     UNKNOWN("UNKNOWN", 0),
 

@@ -16,7 +16,7 @@ public interface UserRepository extends JpaRepository<User, String> {
     @Transactional
     @Modifying
     @Query(value = "insert into user(name, email, telephone, user_type_enum, is_admin, password)" +
-            " values(:#{#user.name},:#{#user.email},:#{#user.telephone},:#{#user.userTypeEnum},false,null)",
+            " values(:#{#user.name},:#{#user.email},:#{#user.telephone},:#{#user.userTypeEnum.name()},false,:#{#user.password})",
             nativeQuery = true)
     void insert(@Param("user") User user);
 

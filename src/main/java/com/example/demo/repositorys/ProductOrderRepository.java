@@ -15,6 +15,8 @@ import java.util.List;
 public interface ProductOrderRepository extends JpaRepository<ProductOrder, ProductOrderUPK> {
     List<ProductOrder> findProductOrdersByOrderId(Long orderId);
 
+    List<Long> findProductIdByOrderId(Long orderId);
+
     @Transactional
     @Modifying
     @Query(value = "insert into product_order(orderId, productId)" +

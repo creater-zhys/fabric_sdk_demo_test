@@ -7,5 +7,5 @@ import java.util.List;
 public interface IngredientService {
 
     // 生产成品
-    Product addIngredient(List<Long> materialIdList, Long productId);
+    void addIngredient(List<Long> materialIdList, Long productId);
 }
